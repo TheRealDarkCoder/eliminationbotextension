@@ -1,13 +1,12 @@
 // ==UserScript==
-// @name           Elimination Discord Bot scraper
+// @name           Ape
 // @namespace      http://darkcoder.xyz
 // @match        https://www.torn.com/competition.php*
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant          GM_xmlhttpRequest
 // ==/UserScript==
-waitForKeyElements ("#lumberjacks > ul > li.score > span", actionFunction);
-function actionFunction (jNode) {
+setTimeout (function () {
     var teamNames = ['lumberjacks', 'field-mice', 'trolls', 'millennials', 'dream-team', 'breakfast-club', 'band-of-mothers', 'hillbillies',
                      'revengers', 'punchbags', 'cowboys', 'keyboard-warriors'];
     var data = [
@@ -69,8 +68,8 @@ function actionFunction (jNode) {
                     data[k]['score'] = parseInt(score.innerText.replace(',', ""));
                 }
             }
-            console.log(data);
         }
+    }
         GM_xmlhttpRequest ( {
         method:     "POST",
         url:        "http://darkcoder.pythonanywhere.com/api/",
@@ -80,10 +79,10 @@ function actionFunction (jNode) {
         },
         onload:     function (response) {
             console.log ("POSTED");
+            console.log(data);
         }
     }
   );
 
-        }
 
-}
+}, 10000);
