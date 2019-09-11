@@ -6,7 +6,7 @@
 // @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant          GM_xmlhttpRequest
 // ==/UserScript==
-setTimeout (function () {
+setInterval (function () {
     var teamNames = ['lumberjacks', 'field-mice', 'trolls', 'millennials', 'dream-team', 'breakfast-club', 'band-of-mothers', 'hillbillies',
                      'revengers', 'punchbags', 'cowboys', 'keyboard-warriors'];
     var data = [
