@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name           Ape
+// @name           Elimination Discord Bot scraper
 // @namespace      http://darkcoder.xyz
 // @match        https://www.torn.com/competition.php*
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
