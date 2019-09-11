@@ -62,10 +62,12 @@ setInterval (function () {
     for(var i = 0; i < teamNames.length; i++){
         teamName = teamNames[i];
         score = document.querySelector("#" + teamNames[i] + " > ul > li.score > span");
+        lives = document.querySelector("#" + teamNames[i] + " > ul > li.lives")
         if(score){
             for (var k in data){
                 if(data[k]['name'] == teamName){
                     data[k]['score'] = parseInt(score.innerText.replace(',', ""));
+                    data[k]['lives'] = parseInt(lives.innerText);
                 }
             }
         }
