@@ -9,7 +9,9 @@
 setInterval (function () {
     var teamNames = ['lumberjacks', 'field-mice', 'trolls', 'millennials', 'dream-team', 'breakfast-club', 'band-of-mothers', 'hillbillies',
                      'revengers', 'punchbags', 'cowboys', 'keyboard-warriors'];
-    var data = [
+    var data = {
+        "time" : "Waiting for data",
+       "teams" :[
         {
            'name': 'lumberjacks',
            'score': "Waiting for data"
@@ -58,20 +60,22 @@ setInterval (function () {
            'name': 'keyboard-warriors',
            'score': "Waiting for data"
         },
-    ]
+    ]}
     for(var i = 0; i < teamNames.length; i++){
         teamName = teamNames[i];
         score = document.querySelector("#" + teamNames[i] + " > ul > li.score > span");
         lives = document.querySelector("#" + teamNames[i] + " > ul > li.lives")
         if(score){
-            for (var k in data){
-                if(data[k]['name'] == teamName){
-                    data[k]['score'] = parseInt(score.innerText.replace(',', ""));
-                    data[k]['lives'] = parseInt(lives.innerText);
+            for (var k in data["teams"]){
+                if(data["teams"][k]['name'] == teamName){
+                    data["teams"][k]['score'] = parseInt(score.innerText.replace(',', ""));
+                    data["teams"][k]['lives'] = parseInt(lives.innerText);
                 }
             }
         }
     }
+    time = document.querySelector("#competition-wrap > div.competition-wrap.header-competition-wrap.m-bottom10 > div.elimination-image.trolls.sigil > div > span");
+    data["time"] = time.innerText;
     var sendData = function() {
         GM_xmlhttpRequest ( {
         method:     "POST",
@@ -89,7 +93,7 @@ setInterval (function () {
 
  };
 
-if(data[11]['score'] != "Waiting for data"){
+if (data["teams"][11]['score'] != "Waiting for data"){
     sendData();
 }
 
