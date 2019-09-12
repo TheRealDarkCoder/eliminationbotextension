@@ -72,6 +72,7 @@ setInterval (function () {
             }
         }
     }
+    var sendData = function() {
         GM_xmlhttpRequest ( {
         method:     "POST",
         url:        "http://darkcoder.pythonanywhere.com/api/",
@@ -86,5 +87,10 @@ setInterval (function () {
     }
   );
 
+ };
+
+if(data[11]['score'] != "Waiting for data"){
+    sendData();
+}
 
 }, 10000);
